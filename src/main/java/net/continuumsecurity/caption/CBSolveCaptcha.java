@@ -11,12 +11,11 @@ public class CBSolveCaptcha implements ISolveCaptcha {
 	public final static String CHARSET="UTF-8";
 	private CaptchaSolver solver;
 	
-	public void CBSolveCaptcha() {
+	public CBSolveCaptcha() {
 		 solver = new CaptchaSolver();
 	}
 	
 	public String solveFromUrl(String strUrl) {
-		String result = null;
 		try {
 			URL url = new URL(strUrl);
 			URLConnection conn = url.openConnection();
