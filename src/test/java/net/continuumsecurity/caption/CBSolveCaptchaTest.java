@@ -14,7 +14,7 @@ public class CBSolveCaptchaTest {
 	@Test
 	public void test() {
 		ISolveCaptcha solver = new CBSolveCaptcha();
-		assertEquals("7T8uGr",solver.solveFromUrl("http://www.google.com/recaptcha/api/image?c=03AHJ_VuskAvuLHmgyC_OPZupQKPuEdaQffKe4LDRmcWnypZHsjzh-P3w_8Wd9BkjpC3Yb9XdL8R9noFMldSOmj4oJWPExgw1j56k9krPWujcVTCX0x4QXIxu75Y5y9KDS_mnKYW0k5_782FetlL8KS0sq9vwV_0STMxIvkO45Birg_FQLOT4N1WY"));
+		assertEquals("7T8uGr",solver.solveFromUrl("http://www.google.com/recaptcha/api/image?c=03AHJ_Vuv75stwxFKNM3yXnLcjmg9goF2lHVDPS8VNY5VMNARi4GLDfjjkk-LO7oiVNT7s2GoOSr0hxaxCt6vo_6BR-au23qhhYPFXOjf0n0NLi_l7BnQUQWnYRq4SUdEyIyawegblX3yzxiuMxAxxLPwsb4qqaa3m-w"));
 	}
 
 }

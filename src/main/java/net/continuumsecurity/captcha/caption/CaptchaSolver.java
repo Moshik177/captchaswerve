@@ -2,6 +2,8 @@
 
 package net.continuumsecurity.captcha.caption;
 
+import org.apache.log4j.Logger;
+
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -24,6 +26,7 @@ import java.util.regex.Pattern;
 public class CaptchaSolver {
 	private String _login;
 	private String _accessKey;
+    public static Logger log = Logger.getLogger(CaptchaSolver.class);
 	
 	private final String CLIENT_VERSION = "1.0";
 	private final String CAPTCHA_SOLVE_URI = "http://captchabuster.com/client/captcha.ashx";
@@ -35,22 +38,17 @@ public class CaptchaSolver {
 	private final Pattern _regexBalance = Pattern.compile("OK/([\\d\\.]+)[\\r\\n]+([\\d+\\.])[\\r\\n]*", Pattern.CASE_INSENSITIVE | Pattern.MULTILINE);
 	private final Pattern _regexError = Pattern.compile("ERR/([\\d\\.]+)[\\r\\n]+(\\d+)[\\r\\n]+([^\\r\\n]*)[\\r\\n]+", Pattern.CASE_INSENSITIVE | Pattern.MULTILINE);
 	private final DateFormat _dateFormat = new SimpleDateFormat("yyyy-M-d");
+    private final String CONFIGFILE = "captchabuster.properties";
 	
-	/**
-	 * Constuctor 
-	 * @param login Your login 
-	 * @param accesskey Your access key
-	 */
+
 	public CaptchaSolver () {
 		Properties config = new Properties();
 		try {
-			config.load(new FileInputStream("captchabuster.properties"));
+			config.load(new FileInputStream(CONFIGFILE));
 		} catch (FileNotFoundException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			log.error("No config file for capturebuster.com found: " + CONFIGFILE);
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+            log.error("Error reading config file: " + CONFIGFILE);
 		}
 		_login = config.getProperty("login");
 		_accessKey = config.getProperty("key");
@@ -81,12 +79,7 @@ public class CaptchaSolver {
 		if (result == null) throw new RuntimeException("SolveResult was null.");
 		return result.getResult();
 	}
-	/**
-	 * Solves the CAPTCHA images. All image formats are supported
-	 * Caller is responsible for Disposing captcha image 
-	 * @param image Your CAPTCHA image
-	 * @return CAPTCHA solve result
-	 */
+
 	public SolveResult solveCaptcha(InputStream imageStream) throws Exception {
 		if (imageStream == null)
             throw new IllegalArgumentException("captcha");

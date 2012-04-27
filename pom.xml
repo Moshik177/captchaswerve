@@ -5,7 +5,7 @@
   <artifactId>captchaswerve</artifactId>
   <packaging>jar</packaging>
   <version>1.0-SNAPSHOT</version>
-  <name>captchabuster</name>
+  <name>captchaswerve</name>
   <url>http://maven.apache.org</url>
   <dependencies>
 		<dependency>
@@ -13,5 +13,10 @@
 			<artifactId>junit</artifactId>
 			<version>4.4</version>
 		</dependency>
+      <dependency>
+          <groupId>log4j</groupId>
+          <artifactId>log4j</artifactId>
+          <version>1.2.16</version>
+      </dependency>
   </dependencies>
 </project>
