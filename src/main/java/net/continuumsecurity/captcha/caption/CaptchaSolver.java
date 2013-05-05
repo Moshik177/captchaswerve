@@ -68,17 +68,6 @@ public class CaptchaSolver {
 	public void dispose() {
 		
 	}
-	
-	public String solveCaptchaFromUrl(InputStream is) {
-		SolveResult result=null;
-		try {
-			result = solveCaptcha(is);
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		if (result == null) throw new RuntimeException("SolveResult was null.");
-		return result.getResult();
-	}
 
 	public SolveResult solveCaptcha(InputStream imageStream) throws Exception {
 		if (imageStream == null)
