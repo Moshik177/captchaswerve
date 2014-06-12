@@ -1,12 +1,13 @@
 # Description
-A simple wrapper around CAPTCHA solving services.  Only supports captchbuster at the moment.
+A simple wrapper around CAPTCHA solving services.  Only supports deathbycaptcha.com at the moment.
 
 # Install
-Signup at captchabuster, then create a properties file:
-captchabuster.properties with properties for "login" and "api", e.g.:
+Signup at deathbycaptcha, then create a properties file:
+deathbycaptcha.properties, e.g.:
 
-login=myusername
-api=theKeyTheyAssignToMe
+type=DeathByCaptcha
+username=billybobuser
+password=password
 
 Install it into the local maven repository with:
 
